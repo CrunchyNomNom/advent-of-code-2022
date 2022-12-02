@@ -3,12 +3,8 @@ package com.github.crunchynomnom.aoc2022.puzzles
 import Puzzle
 
 class Day01 : Puzzle() {
-    override fun runAll(input: List<String>) {
-        part1(input); part2(input);
-    }
 
     override fun part1(input: List<String>) {
-        println(input)
         var fattest = 0
         var current = 0
         for (x in input) {
@@ -23,7 +19,6 @@ class Day01 : Puzzle() {
     }
 
     override fun part2(input: List<String>) {
-        printHorizontalBreak()
         println("part2")
         var fattest3 = listOf(0, 0, 0)
         var current = 0

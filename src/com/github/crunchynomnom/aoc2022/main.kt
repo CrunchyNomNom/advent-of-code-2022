@@ -1,6 +1,10 @@
 import com.github.crunchynomnom.aoc2022.puzzles.*
 import java.lang.IllegalArgumentException
+import kotlin.time.DurationUnit
+import kotlin.time.ExperimentalTime
+import kotlin.time.measureTime
 
+@ExperimentalTime
 fun main(args: Array<String>) {
     if(args.size !in 2..3) {
         println("Invalid number of args; usage: <puzzle-number> puzzle|example <part-number>")
@@ -9,24 +13,31 @@ fun main(args: Array<String>) {
     val input = readInput(args[0], args[1] == "puzzle")
     val day : Puzzle = when (args[0]) {
         "01" -> Day01()
+        "02" -> Day02()
         else -> throw IllegalArgumentException("Day not found!")
     }
 
-    if (args.size == 3) {
+    val task = if (args.size == 3) {
         when (args[2]) {
-            "1" -> day.part1(input)
-            "2" -> day.part2(input)
+            "1" -> Puzzle::part1
+            "2" -> Puzzle::part2
+            else -> Puzzle::runAll
         }
-    } else day.runAll(input)
+    } else Puzzle::runAll
+
+    measureTime {
+        task.invoke(day, input)
+    }.also { println("\nDuration: " + it.toString(DurationUnit.SECONDS, 3)) }
 
 }
 
 abstract class Puzzle {
-    abstract fun runAll(input: List<String>)
     abstract fun part1(input: List<String>)
     abstract fun part2(input: List<String>)
 
-    fun printHorizontalBreak() {
+    fun runAll(input: List<String>) {
+        part1(input)
         println("===================================================================================================")
+        part2(input)
     }
 }
