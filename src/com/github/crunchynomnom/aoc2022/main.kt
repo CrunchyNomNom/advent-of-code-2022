@@ -14,6 +14,7 @@ fun main(args: Array<String>) {
     val day : Puzzle = when (args[0]) {
         "01" -> Day01()
         "02" -> Day02()
+        "03" -> Day03()
         else -> throw IllegalArgumentException("Day not found!")
     }
 
