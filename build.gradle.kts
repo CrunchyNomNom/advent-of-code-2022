@@ -7,10 +7,6 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    implementation("io.github.microutils:kotlin-logging-jvm:2.1.21")
-}
-
 tasks {
     sourceSets {
         main {
@@ -25,5 +21,5 @@ tasks {
 
 application {
     // Define the main class for the application.
-    mainClass.set("com.github.crunchynomnom.aoc2022.main")
+    mainClass.set("com.github.crunchynomnom.aoc2022.MainKt")
 }

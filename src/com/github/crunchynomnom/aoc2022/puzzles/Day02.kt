@@ -13,7 +13,6 @@ class Day02 : Puzzle() {
             val a = (me - opp + 4) % 3
             val b = a*3 + me
 
-            println("$opp $me  $a $b")
             tot += b
         }
         println(tot)
@@ -28,7 +27,6 @@ class Day02 : Puzzle() {
             val me = (opp + guide + 2) % 3 + 1
             val b = (guide + 1) * 3 + me
 
-            println("$opp $guide $me\t$b")
             tot += b
         }
         println(tot)
