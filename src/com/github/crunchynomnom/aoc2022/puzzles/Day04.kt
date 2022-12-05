@@ -1,10 +1,12 @@
 package com.github.crunchynomnom.aoc2022.puzzles
 
 import Puzzle
+import java.io.File
 
 class Day04 : Puzzle() {
-    override fun part1(input: List<String>) {
+    override fun part1(input: File) {
         println(input
+            .readLines()
             .map { it.split(",", "-") }
             .map { it.map { x -> x.toInt() } }
             .count { (l1, r1, l2, r2) ->
@@ -12,8 +14,9 @@ class Day04 : Puzzle() {
         )
     }
 
-    override fun part2(input: List<String>) {
+    override fun part2(input: File) {
         println(input
+            .readLines()
             .map { it.split(",", "-") }
             .map { it.map { x -> x.toInt() } }
             .count { (l1, r1, l2, r2) ->

@@ -9,7 +9,7 @@ fun readInput(day: String, isPuzzle: Boolean) =
     File(
         "input/$day",
         if (isPuzzle) "puzzle.txt" else "example.txt"
-    ).readLines()
+    )
 
 /**
  * Converts string to md5 hash.

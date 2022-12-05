@@ -1,4 +1,5 @@
 import com.github.crunchynomnom.aoc2022.puzzles.*
+import java.io.File
 import java.lang.IllegalArgumentException
 import kotlin.time.DurationUnit
 import kotlin.time.ExperimentalTime
@@ -16,6 +17,7 @@ fun main(args: Array<String>) {
         "02" -> Day02()
         "03" -> Day03()
         "04" -> Day04()
+        "05" -> Day05()
         else -> throw IllegalArgumentException("Day not found!")
     }
 
@@ -33,11 +35,11 @@ fun main(args: Array<String>) {
 
 }
 
-abstract class Puzzle {
-    abstract fun part1(input: List<String>)
-    abstract fun part2(input: List<String>)
+open class Puzzle {
+    open fun part1(input: File) { println(input.readLines()) }
+    open fun part2(input: File) { println(input.readLines()) }
 
-    fun runAll(input: List<String>) {
+    fun runAll(input: File) {
         part1(input)
         println("===================================================================================================")
         part2(input)

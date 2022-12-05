@@ -1,14 +1,15 @@
 package com.github.crunchynomnom.aoc2022.puzzles
 
 import Puzzle
+import java.io.File
 
 class Day03 : Puzzle() {
-    override fun part1(input: List<String>) {
-        println(input.sumOf { getPrio(findMatch(it)) })
+    override fun part1(input: File) {
+        println(input.readLines().sumOf { getPrio(findMatch(it)) })
     }
 
-    override fun part2(input: List<String>) {
-        println(input.chunked(3).sumOf { getPrio(getCommonFor3(it)) })
+    override fun part2(input: File) {
+        println(input.readLines().chunked(3).sumOf { getPrio(getCommonFor3(it)) })
     }
 
     // returns common letter
