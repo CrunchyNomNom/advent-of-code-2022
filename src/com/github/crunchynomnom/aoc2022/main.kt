@@ -35,9 +35,9 @@ fun main(args: Array<String>) {
 
 }
 
-open class Puzzle {
-    open fun part1(input: File) { println(input.readLines()) }
-    open fun part2(input: File) { println(input.readLines()) }
+abstract class Puzzle {
+    abstract fun part1(input: File)
+    abstract fun part2(input: File)
 
     fun runAll(input: File) {
         part1(input)

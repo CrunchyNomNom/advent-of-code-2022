@@ -11,7 +11,7 @@ import java.io.File
 
 class Day${1} : Puzzle() {
     override fun part1(input: File) {
-        TODO(\"Not yet implemented\")
+        println(input.readLines())
     }
 
     override fun part2(input: File) {
