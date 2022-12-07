@@ -5,7 +5,7 @@ import java.io.File
 
 
 class Day07 : Puzzle() {
-    var dirHeap: MutableList<Dir> = mutableListOf()
+    private var dirHeap: MutableList<Dir> = mutableListOf()
 
     override fun part1(input: File) {
         var result = 0
@@ -35,34 +35,33 @@ class Day07 : Puzzle() {
         println(dirHeap.last().getBestSize(req))
     }
 
-}
-
-data class Dir(
-    val dirs: MutableList<Dir> = mutableListOf(),
-    val files: MutableList<List<String>> = mutableListOf(),
-    var size: Int? = null
-) {
-    fun getAdjustedSize(limit: Int = 100000): Int {
-        val result = getTotalSize()
-        return (if(result <= limit) result else 0)
-    }
-
-    fun getBestSize(req: Int): Int {
-        if (dirs.isEmpty()) return getTotalSize()
-        var best = Int.MAX_VALUE
-        for (dir in dirs) {
-            val subbest = dir.getBestSize(req)
-            if (subbest > req && subbest - req < best - req)
-                best = subbest
+    private data class Dir(
+        val dirs: MutableList<Dir> = mutableListOf(),
+        val files: MutableList<List<String>> = mutableListOf(),
+        var size: Int? = null
+    ) {
+        fun getAdjustedSize(limit: Int = 100000): Int {
+            val result = getTotalSize()
+            return (if(result <= limit) result else 0)
         }
-        return (if (getTotalSize() > req && getTotalSize() - req < best - req) getTotalSize() else best)
-    }
 
-    fun getTotalSize(): Int {
-        if (size == null) {
-            size = dirs.sumOf { x -> x.getTotalSize() } +
-                files.sumOf { x -> x.first().toInt() }
+        fun getBestSize(req: Int): Int {
+            if (dirs.isEmpty()) return getTotalSize()
+            var best = Int.MAX_VALUE
+            for (dir in dirs) {
+                val subbest = dir.getBestSize(req)
+                if (subbest > req && subbest - req < best - req)
+                    best = subbest
+            }
+            return (if (getTotalSize() > req && getTotalSize() - req < best - req) getTotalSize() else best)
         }
-        return (size as Int)
+
+        fun getTotalSize(): Int {
+            if (size == null) {
+                size = dirs.sumOf { x -> x.getTotalSize() } +
+                        files.sumOf { x -> x.first().toInt() }
+            }
+            return (size as Int)
+        }
     }
 }
