@@ -20,11 +20,6 @@ class Day06 : Puzzle() {
     }
 
     override fun part2(input: File) {
-//        println(input.readLines())
-//        for (line in input.readLines()) {
-//            var spotted: BooleanArray = BooleanArray(27) { _ -> false}
-//
-//        }
         println(input.readLines())
         for (line in input.readLines()) {
             var last13 = line.take(13).toMutableList()
