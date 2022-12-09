@@ -20,6 +20,7 @@ fun main(args: Array<String>) {
         "05" -> Day05()
         "06" -> Day06()
         "07" -> Day07()
+        "08" -> Day08()
         else -> throw IllegalArgumentException("Day not found!")
     }
 
